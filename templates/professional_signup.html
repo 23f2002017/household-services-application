@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <head>
+        <title>Professional Registration</title>
+    </head>
+    <body style="margin-left: 50px;">
+        <h1>Professional Registration</h1>
+        <fieldset style="margin-right: 800px;">
+            <legend>Input Professional Registration Details</legend>
+            <form method="post" action="/professional_signup">
+                <p>First Name : <input type="text" name="first_name" required/></p>
+                <p>Last Name : <input type="text" name="last_name" required/></p>
+                <p>Email : <input type="email" name="email" required/></p>
+                <p>Password : <input type="password" name="password" required/></p>
+                <p>Select your Service Type : 
+                    <select name="service_type" required>
+                        {% for service_type in service_lst %}
+                        <option value="{{service_type}}">{{service_type}}</option>
+                        {% endfor %}
+                    </select> </p>
+                <p>Experience : <input type="number" name="experience" required/> (in months)</p>    
+                <p>Zip Code : <input type="number" name="pincode" required/></p> 
+                <p>Resume (in pdf format): <input type="file" name="resume" /> </p>   
+                <input type="submit" value="Sign Up" />
+            </form>
+        </fieldset>    
+    </body>
+</html>    

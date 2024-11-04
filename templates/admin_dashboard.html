@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+    <head>
+        <title>Admin Dashboard</title>
+        <style>
+            th, td {
+                text-align: center;
+                border: 1px solid;
+                padding: 4px;
+            }
+            table {
+                border: 1px solid;
+            }
+            div {
+                border: 2px solid; 
+                padding: 15px; 
+                margin-right: 30px; 
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body style="margin-left: 50px;">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <p><a href="/login" >Logout</a></p>
+        <div id="services">
+            <h2>Services</h2>
+            <table>
+                <tr>
+                    <th>Service ID</th>
+                    <th>Service Type</th>
+                    <th>Service Description</th>
+                    <th>Base Price</th>
+                    <th>Time Required</th>
+                    <th>Actions</th>
+                </tr>
+                {% for service in services %}
+                <tr>
+                    <td>{{service.Service_ID}}</td>
+                    <td>{{service.Type}}</td>
+                    <td>{{service.Description}}</td>
+                    <td>Rs. {{service.Base_Price}}</td>
+                    <td>{{service.Time_required}} min</td>
+                    <td><a href="/edit_service/{{service.Service_ID}}">Edit</a> | </t> <a href="/delete_service/{{service.Service_ID}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <p><a href="/create_service" >+Add a Service</a></p>
+        </div>
+        <div id="professionals">
+            <h2>Professioanls</h2>
+            <table>
+                <tr>
+                    <th>Professional ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Service Type</th>
+                    <th>Location (Pincode)</th>
+                    <th>Experience</th>
+                    <th>Reviews</th>
+                    <th>Ratings</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                {% for professional in professionals %}
+                <tr>
+                    <td>{{professional.Professional_ID}}</td>
+                    <td>{{professional.First_Name}} {{professional.Last_Name}}</td>
+                    <td>{{professional.Email}}</td>
+                    <td>{{professional.Service_Type}}</td>
+                    <td>{{professional.Pincode}}</td>
+                    <td>{{professional.Experience}} months</td>
+                    <td>{{professional.Reviews}}</td>
+                    <td>{{professional.Ratings}}</td>
+                    <td>{{professional.Status}}</td>
+                    {% if professional.Status == 'Registered' %}
+                        <td><a href="/approve_professional/{{professional.Professional_ID}}">Approve</a> | </t> <a href="/delete_professional/{{professional.Professional_ID}}">Reject</a></td>
+                    {% elif professional.Status == "Approved" %}    
+                        <td><a href="/block_professional/{{professional.Professional_ID}}">Block</a> | </t> <a href="/delete_professional/{{professional.Professional_ID}}">Delete</a></td>
+                    {% elif professional.Status == "Blocked" %}    
+                        <td><a href="/approve_professional/{{professional.Professional_ID}}">Unblock</a> | </t> <a href="/delete_professional/{{professional.Professional_ID}}">Delete</a></td>
+                    {% endif %}    
+                </tr>
+                {% endfor %}
+            </table>    
+        </div>
+        <div id="users">
+            <h2>Users</h2>
+            <table>
+                <tr>
+                    <th>User ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th style="width: 200px">Address</th>
+                    <th>Location (Pincode)</th>
+                    <th>Reviews</th>
+                    <th>Ratings</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.User_ID}}</td>
+                    <td>{{user.First_Name}} {{user.Last_Name}}</td>
+                    <td>{{user.Email}}</td>
+                    <td>{{user.Phone_No}}</td>
+                    <td>{{user.Address}}</td>
+                    <td>{{user.Pincode}}</td>
+                    <td>{{user.Reviews}}</td>
+                    <td>{{user.Ratings}}</td>
+                    <td>{{user.Status}}</td>
+                    {% if user.Status == 'Registered' %}
+                        <td><a href="block_user/{{user.User_ID}}">Block</a></td>
+                    {% elif user.Status == 'Blocked' %}
+                        <td><a href="unblock_user/{{user.User_ID}}">Unblock</a</td>  
+                    {% endif %}           
+                </tr>
+                {% endfor %}
+            </table>    
+        </div>
+    </body>
+</html> 

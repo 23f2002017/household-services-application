@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+    <head>
+        <title>Add Service Page</title>
+    </head>
+    <body style="margin-left: 50px;">
+        <h1>Creating New Service</h1>
+        <fieldset style="margin-right: 850px;">
+            <legend>Input New Service Details</legend>
+            <form method="post" action="/create_service" >
+                <p>Service Type : <input type="text" name="type" required="required"/></p>
+                <p>Service Description : <input type="text" name="description" required="required"/></p>
+                <p>Base Price : <input type="number" step="0.01" name="base_price" required="required"/></p>
+                <p>Time Required : <input type="number" name="time" required="required"/> (in min)</p>
+                <input type="submit" value="Add Service" />
+            </form>
+        </fieldset>    
+    </body>
+</html>  
