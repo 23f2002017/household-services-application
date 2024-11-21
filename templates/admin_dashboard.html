@@ -18,9 +18,9 @@
             }
         </style>
     </head>
-    <body style="margin-left: 50px;">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p><a href="/login" >Logout</a></p>
+    <body style="margin: 50px;">
+        <h1>Welcome to the Admin's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="">Home</a> <a style="margin-right: 20px;" href="/admin/search">Search</a> <a style="margin-right: 20px;" href="/admin_summary">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a></p>
         <div id="services">
             <h2>Services</h2>
             <table>
@@ -51,10 +51,9 @@
                 <tr>
                     <th>Professional ID</th>
                     <th>Full Name</th>
-                    <th>Email</th>
+                    <th>E-Mail</th>
                     <th>Service Type</th>
-                    <th>Location (Pincode)</th>
-                    <th>Experience</th>
+                    <th>Location <br />(Pincode)</th>
                     <th>Reviews</th>
                     <th>Ratings</th>
                     <th>Status</th>
@@ -62,12 +61,11 @@
                 </tr>
                 {% for professional in professionals %}
                 <tr>
-                    <td>{{professional.Professional_ID}}</td>
+                    <td><a href="/get_details_professional/{{professional.Professional_ID}}">{{professional.Professional_ID}}</a></td>
                     <td>{{professional.First_Name}} {{professional.Last_Name}}</td>
                     <td>{{professional.Email}}</td>
                     <td>{{professional.Service_Type}}</td>
                     <td>{{professional.Pincode}}</td>
-                    <td>{{professional.Experience}} months</td>
                     <td>{{professional.Reviews}}</td>
                     <td>{{professional.Ratings}}</td>
                     <td>{{professional.Status}}</td>
@@ -82,16 +80,39 @@
                 {% endfor %}
             </table>    
         </div>
+        <div id="service_requests">
+            <h2>Service Requests</h2>
+            <table>
+                <tr>
+                    <th>Request ID</th>
+                    <th>User ID</th>
+                    <th>Professional ID <br />(if any)</th>
+                    <th>Service ID</th>
+                    <th>Request Time</th>
+                    <th>Current Status</th>
+                </tr>
+                {% for request in service_requests %}
+                <tr>
+                    <td><a href="/get_service_request_details/{{request.Request_ID}}">{{request.Request_ID}}</a></td>
+                    <td>{{request.User_ID}}</td>
+                    <td>{{request.Professional_ID}}</td>
+                    <td>{{request.Service_ID}}</td>
+                    <td>{{(request.Request_time|string)[0:-7]}}</td>
+                    <td>{{request.Status}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
         <div id="users">
             <h2>Users</h2>
             <table>
                 <tr>
                     <th>User ID</th>
                     <th>Full Name</th>
-                    <th>Email</th>
+                    <th>E-Mail</th>
                     <th>Phone</th>
                     <th style="width: 200px">Address</th>
-                    <th>Location (Pincode)</th>
+                    <th>Location <br />(Pincode)</th>
                     <th>Reviews</th>
                     <th>Ratings</th>
                     <th>Status</th>

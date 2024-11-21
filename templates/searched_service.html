@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+    <head>
+        <title>Customer Searched Service</title>
+        <style>
+            th, td {
+                text-align: center;
+                border: 1px solid;
+                padding: 7px;
+            }
+            table {
+                border: 1px solid;
+            }
+            div {
+                border: 2px solid;
+                padding: 0px 15px 15px 15px;
+                margin-right: 30px;
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body style="margin: 50px;">
+        <h1>User's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="/customer/{{user.User_ID}}">Home</a> <a style="margin-right: 20px;" href="/customer_search/{{user.User_ID}}">Search</a> <a style="margin-right: 20px;" href="/customer_summary/{{user.User_ID}}">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a> Welcome {{user.First_Name}} {{user.Last_Name}}, <a href = "/update_user_profile/{{user.User_ID}}"><button>Edit Profile</button></a></p>
+        {% if user.Status == "Blocked" %}
+            <p><b>Your ID has currently been blocked by the Admin</b></p>
+        {% else %}    
+            <div id="services">
+                <h2>Services available at your Pincode, {{user.Pincode}}</h2>
+                {% if services|length != 0 %}
+                    <table>
+                        <tr>
+                            <th>Service Type</th>
+                            <th>Service Description</th>
+                            <th>Base Price</th>
+                            <th>Time Required</th>
+                            <th>Actions</th>
+                        </tr>
+                        {% for service in services %}
+                        <tr>
+                            <td>{{service.Type}}</td>
+                            <td>{{service.Description}}</td>
+                            <td>Rs. {{service.Base_Price}}</td>
+                            <td>{{service.Time_required}} min</td>
+                            <td><a href="/{{user.User_ID}}/book_service/{{service.Service_ID}}"><button>Book</button></a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>This service is not currently available at your location</p>    
+                {% endif %}    
+            </div>
+        {% endif %}    
+    </body>    
+</html>

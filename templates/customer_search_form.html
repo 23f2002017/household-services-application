@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+    <head>
+        <title>Customer Search Form</title>
+        <style>
+            input{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+    <body style="margin: 50px;">
+        <h1>User's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="/customer/{{user.User_ID}}">Home</a> <a style="margin-right: 20px;" href="">Search</a> <a style="margin-right: 20px;" href="/customer_summary/{{user.User_ID}}">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a> Welcome {{user.First_Name}} {{user.Last_Name}}, <a href = "/update_user_profile/{{user.User_ID}}"><button>Edit Profile</button></a></p>
+        <fieldset>
+            <legend>Search a service</legend>
+            <form method="post">
+                <p>Search by : 
+                    <select name="search_by" required>
+                        <option value="service_id">ID</option>
+                        <option value="service_type">Type</option>
+                        <option value="search_description">Decription</option>
+                    </select> 
+                    <input type="text" name="field" required />
+                    <input type="submit" value="Submit" />
+                </p>  
+            </form>
+        </fieldset>        
+    </body>    
+</html>

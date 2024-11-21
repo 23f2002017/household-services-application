@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+        <title>Request Details</title>
+    </head>
+    <body style="margin: 50px; border: 2px solid;" >
+        <div style="margin-left: 25px;">
+        <h1>Service Request Details</h1>
+        <p><b>Request ID : {{request.Request_ID}}</b></p>
+        <p>Customer ID : {{user.User_ID}}</p>
+        <p>Customer Name : {{user.First_Name}} {{user.Last_Name}}</p>
+        <p>Service Type : {{service.Type}}</p>
+        <p>Service Description : {{service.Description}}</p>
+        <p>Request Time : {{(request.Request_time|string)[0:-7]}}</p>
+        {% if request.Status == "User Closed" %}
+            <p>Completion Time : {{(request.Completion_time|string)[0:-7]}}</p>
+        {% endif %}
+        {% if professional != None %}
+            <p>Professional ID : {{professional.Professional_ID}}</p>
+            <p>Professional Name : {{professional.First_Name}} {{professional.Last_Name}}</p>
+        {% else %}   
+            <p>Professional for this request has not yet been finalised</p>
+        {% endif %}    
+        <p>Address : {{user.Address}}</p>
+        <p>Pincode : {{user.Pincode}}</p>
+        <p>Status : {{request.Status}}</p>
+        <p><a href="/admin_portal">Go back</a></p>
+        </div>
+    </body>
+</html>  

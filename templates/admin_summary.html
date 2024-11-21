@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <head>
+        <title>Admin Summary</title>
+        <style>
+            div {
+                border: 2px solid; 
+                padding: 15px; 
+                margin-right: 30px; 
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body style="margin: 50px;">
+        <h1>Admin's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="/admin_portal">Home</a> <a style="margin-right: 20px;" href="/admin/search">Search</a> <a style="margin-right: 20px;" href="">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a></p>
+        <div id="summary">
+            <h3>Summary of all Activities and Ratings</h3>
+            <h1>Ratings from Customers : {{avg_cust_rating}}</h1>
+            <h1>Ratings from Professionals : {{avg_prof_rating}}</h1>
+            <img src="../static/request_status.png" alt="Activities Summary" width="640" height="360"/>
+        </div>
+    </body>    
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+    <head>
+        <title>Customer Summary</title>
+        <style>
+            div {
+                border: 2px solid;
+                padding: 0px 15px 15px 15px;
+                margin-right: 30px;
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body style="margin: 50px;">
+        <h1>User's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="/customer/{{user.User_ID}}">Home</a> <a style="margin-right: 20px;" href="/customer_search/{{user.User_ID}}">Search</a> <a style="margin-right: 20px;" href="">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a> Welcome {{user.First_Name}} {{user.Last_Name}}, <a href = "/update_user_profile/{{user.User_ID}}"><button>Edit Profile</button></a></p>
+        <div id="summary">
+            <h3>Summary of your Bookings and your Rating</h3>
+            {% if user.Ratings == 0 %}
+                <h1>Rating : No Ratings Yet</h1>
+            {% else %}
+                <h1>Rating : {{user.Ratings}}</h1>
+            {% endif %}    
+            <img src="../static/booking_status.png" alt="Bookings Summary" width="640" height="360"/>
+        </div>
+    </body>    
+</html> 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <head>
+        <title>Admin Search Form</title>
+        <style>
+            input{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+    <body style="margin: 50px;">
+        <h1>Admin's Dashboard</h1>
+        <p style="font-size:110%"><a style="margin-right: 20px;" href="/admin_portal">Home</a> <a style="margin-right: 20px;" href="">Search</a> <a style="margin-right: 20px;" href="/admin_summary">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a></p>
+        <fieldset>
+            <legend>Search Inputs</legend>
+            <form method="post">
+                <p>Search by : 
+                    <select name="search_by" required>
+                        <option value="professional_id">Professional by ID</option>
+                        <option value="professional_name">Professional by Name</option>
+                        <option value="professional_type">Professional by Type</option>
+                        <option value="customer_id">Customer by ID</option>
+                        <option value="customer_name">Customer by Name</option>
+                        <option value="service_id">Service by ID</option>
+                        <option value="service_type">Service by Type</option>
+                    </select> 
+                    <input type="text" name="field" required />
+                    <input type="submit" value="Submit" />
+                </p>  
+            </form>
+        </fieldset>        
+    </body>    
+</html>    

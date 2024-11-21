@@ -26,7 +26,6 @@ class Professionals(db.Model):
     Service_Type = db.Column(db.Text, nullable = False )
     Experience = db.Column(db.Integer, nullable = False)
     Pincode = db.Column(db.Integer, nullable = False) 
-    Resume = db.Column(db.LargeBinary, nullable = True)
     Reviews = db.Column(db.Integer, nullable = False)
     Ratings = db.Column(db.Float, nullable = False) 
     Status = db.Column(db.Text, nullable = False) 
@@ -42,11 +41,20 @@ class Service(db.Model):
 class Request(db.Model): 
     __tablename__ = "Service_Requests"   
     Request_ID =  db.Column(db.Integer, primary_key = True, autoincrement = True)
-    User_ID = db.Column(db.Integer, db.ForeignKey("Users.User_ID"), nullable = False)
-    Professional_ID = db.Column(db.Integer, db.ForeignKey("Professionals.Professional_ID"))
+    User_ID = db.Column(db.Integer, nullable = False)
+    Professional_ID = db.Column(db.Integer)
     Service_ID = db.Column(db.Integer, db.ForeignKey("Services.Service_ID"), nullable = False)
     Request_time = db.Column(db.DateTime, nullable = False)
     Completion_time = db.Column(db.DateTime)
-    Rating = db.Column(db.Integer)
+    Rating_to_Prof = db.Column(db.Integer)
     Remark = db.Column(db.Text)
-    Status = db.Column(db.CHAR, nullable = False) 
+    Rating_to_Cust = db.Column(db.Integer)
+    Status = db.Column(db.Text, nullable = False) 
+
+class Request_Response(db.Model):
+    __tablename__ = "Service_Professional_Response" 
+    Request_ID = db.Column(db.Integer, primary_key = True)
+    Service_ID = db.Column(db.Integer, nullable = False)
+    User_ID = db.Column(db.Integer, nullable = False)
+    Professional_ID = db.Column(db.Integer, primary_key = True)
+    Action = db.Column(db.Text, nullable = False)
