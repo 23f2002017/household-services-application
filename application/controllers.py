@@ -21,7 +21,7 @@ def Home():
         return render_template("login_page.html")
     elif request.method=="POST": 
         if request.form["email"] == admin_email and request.form["password"] == admin_password:
-            return render_template("admin_dashboard.html")
+            return redirect("/admin_portal")
         
         customer = Customers.query.filter(Customers.Email == request.form["email"]).first()   
         if customer != None: 
