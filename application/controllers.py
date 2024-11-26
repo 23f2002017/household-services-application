@@ -650,7 +650,6 @@ def Professional_Search(professional_id):
             return render_template("error.html", error_message="Something went Wrong !!", back_to = f"/professional_search/{professional_id}")  
     
 
-
 #Update Professionals Profile
 @app.route("/update_professional_profile/<int:professional_id>", methods = ["GET", "POST"])
 def Update_Professional_Profile(professional_id):
