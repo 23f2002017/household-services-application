@@ -13,14 +13,18 @@
     <body style="margin: 50px;">
         <h1>Professional's Dashboard</h1>
         <p style="font-size:110%"><a style="margin-right: 20px;" href="/professional/{{professional.Professional_ID}}">Home</a> <a style="margin-right: 20px;" href="/professional_search/{{professional.Professional_ID}}">Search</a> <a style="margin-right: 20px;" href="">Summary</a> <a style="margin-right: 550px;" href="/login">Logout</a> Welcome {{professional.First_Name}} {{professional.Last_Name}}, <a href = "/update_professional_profile/{{professional.Professional_ID}}"><button>Edit Profile</button></a></p>
-        <div id="summary">
-            <h3>Summary of your Activities and your Rating</h3>
-            {% if professional.Ratings != 0 %}
-                <h1>Rating : {{professional.Ratings}}</h1>
-            {% else %}
-            <h1>Rating : No Ratings Yet</h1>
-            {% endif %}
-            <img src="../static/request_actions.png" alt="Service Request Summary" width="640" height="360"/>
-        </div>
+        {% if professional.Status == "Registered" %}
+            <p><b>Your application is yet to be approved by the Admin</b></p>
+        {% else %}
+            <div id="summary">
+                <h3>Summary of your Activities and your Rating</h3>
+                {% if professional.Ratings != 0 %}
+                    <h1>Rating : {{professional.Ratings}}</h1>
+                {% else %}
+                <h1>Rating : No Ratings Yet</h1>
+                {% endif %}
+                <img src="../static/request_actions.png" alt="Service Request Summary" width="640" height="360"/>
+            </div>
+        {% endif %}    
     </body>    
 </html>    
