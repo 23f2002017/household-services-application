@@ -14,7 +14,8 @@ admin_password = "Ikram744"
 
 #Controllers 
 
-#Login 
+#Login
+@app.route('/') 
 @app.route("/login", methods = ["GET", "POST"]) 
 def Home():
     if request.method == "GET":
