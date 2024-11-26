@@ -227,6 +227,10 @@ def Edit_Service(service_id):
 def Delete_Service(service_id):
     service = Service.query.filter(Service.Service_ID == service_id).first()
     try:
+        requests = Request.query.filter(Request.Service_ID == service_id).all()
+        for request in requests:
+            if request.Status != "Closed":
+                return render_template("error.html", error_message="Error !! You cannot delete a service whose request is yet to be closed ", back_to = "/admin_portal")
         db.session.delete(service)
         db.session.commit()
     except:
