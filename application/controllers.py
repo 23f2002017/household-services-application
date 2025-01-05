@@ -462,6 +462,22 @@ def Service_Booking(user_id, service_id):
         return redirect(f"/customer/{user_id}")
     
 
+#Deleting an unaccepted Service Request 
+@app.route("/<int:user_id>/customer_delete_request/<int:request_id>")
+def User_Delete_Request(user_id, request_id):
+    request = Request.query.filter(Request.Request_ID == request_id).first()
+    req_response = Request_Response.query.filter(db.and_(Request_Response.Request_ID == request_id, Request_Response.Action == "No Action")).all()
+    try:
+        db.session.delete(request)
+        for response_record in req_response:
+            db.session.delete(response_record)
+        db.session.commit()
+    except:
+        return render_template("error.html", error_message="Something went Wrong !!", back_to = f"/customer/{user_id}")
+    else:
+        return redirect(f"/customer/{user_id}")       
+   
+
 #Closing a Service Request by User
 @app.route("/<int:user_id>/customer_close_request/<int:request_id>", methods = ["GET", "POST"])
 def User_Close_Request(user_id, request_id):

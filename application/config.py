@@ -10,4 +10,4 @@ class config:
 class LocalDevelopmentConfig(config): 
     SQLITE_DB_DIR = os.path.join(curr_dir, "../db_directory")  
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(SQLITE_DB_DIR, "database.sqlite3") 
-    DEBUG = False    
+    DEBUG = True    
