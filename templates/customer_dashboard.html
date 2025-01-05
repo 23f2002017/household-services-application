@@ -76,6 +76,8 @@
                             {% endif %}
                             {% if request["Status"] == "Accepted" %}         
                                 <td><a href="/{{user.User_ID}}/customer_close_request/{{request['Request ID']}}"><button>Close it</button></a></td>
+                            {% elif request["Status"] == "Open" %}
+                                <td><a href="/{{user.User_ID}}/customer_delete_request/{{request['Request ID']}}"><button>Delete</button></a></td>    
                             {% else %}
                                 <td>{{request["Status"]}}</td>
                             {% endif %}
